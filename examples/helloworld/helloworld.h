@@ -1,8 +1,11 @@
-#ifndef SAMPLES_HELLOWORLD_HELLOWORLD_H_
-#define SAMPLES_HELLOWORLD_HELLOWORLD_H_
+// Copyright 2015. All Rights Reserved.
+// Author: pxtian2008@google.com (Xiaotian Pei)
+
+#ifndef EXAMPLES_HELLOWORLD_HELLOWORLD_H_
+#define EXAMPLES_HELLOWORLD_HELLOWORLD_H_
 
 #include <string>
 
-std::string HelloWorld();
+std::string Greeting();
 
-#endif  // SAMPLE_HELLOWORLD_HELLOWORLD__H_
+#endif  // EXAMPLES_HELLOWORLD_HELLOWORLD_H_

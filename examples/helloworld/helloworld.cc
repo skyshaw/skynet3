@@ -1,3 +1,6 @@
+// Copyright 2016. All Rights Reserved.
+// Author: pxtian2008@google.com (Xiaotian Pei)
+
 #include "examples/helloworld/helloworld.h"
 
 #include <string>
@@ -6,6 +9,6 @@
 
 DEFINE_string(name, "World", "Name to greet");
 
-std::string HelloWorld() {
+std::string Greeting() {
   return "Hello, " + FLAGS_name;
 }
