@@ -1,9 +1,9 @@
-#include "example/hello-world.h"
+#include "examples/hello_world/hello_world.h"
 
 #include <stdio.h>
 #include <string>
 
-#include "base/base.h"
+#include "third_party/gflags/gflags.h"
 
 DEFINE_string(name, "world", "Name to output");
 

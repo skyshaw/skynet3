@@ -1,5 +1,6 @@
 #!/bin/bash
 
+TMPDIR=/tmp
 cd "$(dirname "${0}")"
 rm -rf repository
 curl -L -o "${TMPDIR}/gtest-1.7.0.zip" \

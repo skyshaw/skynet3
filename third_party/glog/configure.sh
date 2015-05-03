@@ -5,7 +5,7 @@ set -e -u
 APPLICATION='glog'
 
 RUNFILES="$(pwd)"
-export TMPDIR="$(mktemp -d -t configure)"
+export TMPDIR="$(mktemp -d -t configureXXX)"
 export PATH+=":${RUNFILES}/third_party/${APPLICATION}"
 
 replace() {

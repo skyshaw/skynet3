@@ -36,6 +36,9 @@ toolchain {
   tool_path { name: "gcc" path: "/usr/bin/gcc" }
   cxx_flag: "-std=c++0x"
   linker_flag: "-lstdc++"
+  linker_flag: "-lpthread"
+  linker_flag: "-B/usr/bin/"
+
   # TODO(bazel-team): In theory, the path here ought to exactly match the path
   # used by gcc. That works because bazel currently doesn't track files at
   # absolute locations and has no remote execution, yet. However, this will need
@@ -81,6 +84,8 @@ toolchain {
   cxx_builtin_include_directory: "/opt/local/include"
   cxx_builtin_include_directory: "/usr/local/include"
   cxx_builtin_include_directory: "/Library/Developer/CommandLineTools"
+  cxx_builtin_include_directory: "/System/Library/Frameworks"
+  cxx_builtin_include_directory: "/Library/Frameworks"
   tool_path { name: "gcov" path: "/usr/bin/gcov" }
   tool_path { name: "ld" path: "/usr/bin/ld" }
   tool_path { name: "nm" path: "/usr/bin/nm" }

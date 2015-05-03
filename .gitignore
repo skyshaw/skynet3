@@ -1,2 +1,4 @@
 /bazel-*
+*.pyc
 .DS_Store
+.ropeproject/

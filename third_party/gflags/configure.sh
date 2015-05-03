@@ -5,8 +5,9 @@ set -e -u
 APPLICATION='gflags'
 
 RUNFILES="$(pwd)"
-export TMPDIR="$(mktemp -d -t configure)"
+export TMPDIR="$(mktemp -d -t configureXXX)"
 export PATH+=":${RUNFILES}/third_party/${APPLICATION}"
+echo $PATH
 
 replace() {
   sed -e "s/${1//\//\\/}/${2//\//\\/}/g"

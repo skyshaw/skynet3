@@ -17,7 +17,3 @@
 // Workaround for the problem that MacOS tools give an error if there is no
 // object file on the command line.
 //
-
-// TODO(imos): This exists as a workaround since Mac OSX does not allow .cc
-// files having no symbols.
-void Dummy() {}
