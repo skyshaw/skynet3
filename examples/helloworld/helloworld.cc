@@ -1,4 +1,4 @@
-// Copyright 2016. All Rights Reserved.
+// Copyright 2015. All Rights Reserved.
 // Author: pxtian2008@google.com (Xiaotian Pei)
 
 #include "examples/helloworld/helloworld.h"

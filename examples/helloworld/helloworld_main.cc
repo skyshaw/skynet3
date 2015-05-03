@@ -7,7 +7,7 @@
 #include "third_party/glog/logging.h"
 
 int main(int argc, char** argv) {
-  google::ParseCommandLineFlags(&argc, &argv, true);
+  gflags::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
   LOG(INFO) << "Greeting";
   std::cout << Greeting() << std::endl;
