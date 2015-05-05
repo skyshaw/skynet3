@@ -1,10 +1,10 @@
 // Copyright 2015. All Rights Reserved.
 // Author: pxtian2008@gmail.com (Xiaotian Pei)
 
-#include "re2/re2/re2.h"  // at least reduce one...
-
 #include <cassert>
 #include <cstdio>
+
+#include "re2/re2/re2.h"  // at least reduce one...
 
 int main() {
   int year, month, day;
