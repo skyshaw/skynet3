@@ -13,7 +13,7 @@ class MockFile : public File {
  public:
   MOCK_METHOD2(Open, bool(const char* filename, const char* mode));
   MOCK_METHOD0(Close, bool());
-  MOCK_METHOD2(Read, bool(char* buffer, int buf_size));
+  MOCK_METHOD2(Read, int(char* buffer, int buf_size));
   MOCK_METHOD0(Eof, bool());
 };
 

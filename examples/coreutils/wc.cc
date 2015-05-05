@@ -13,13 +13,13 @@ void WordCount(File* file, int* bytes, int* chars, int* lines, int* words) {
   *chars = 0;
   *lines = 0;
   *words = 0;
-  int kMaxBufferSize = 4096 + 1;  // 1 char for NULL
+  int kMaxBufferSize = 4096;
   char buffer[kMaxBufferSize];
+  bool inword = false;
   while (true) {
-    file->Read(buffer, sizeof buffer);
-    bool inword = false;
+    int nread = file->Read(buffer, sizeof buffer);
     int i = 0;
-    for (i = 0; buffer[i]; ++i) {
+    for (i = 0; i < nread; ++i) {
       const char ch = buffer[i];
       if (ch == '\n') {
         ++*lines;
@@ -30,7 +30,6 @@ void WordCount(File* file, int* bytes, int* chars, int* lines, int* words) {
         if (!inword) {
           ++*words;
           inword = true;
-          LOG(INFO) << ch;
         }
       }
     }

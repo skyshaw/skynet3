@@ -8,24 +8,30 @@
 #include <cstdio>  // TODO(xiaotian): forward declaration
 #include <memory>
 
+#include "third_party/glog/logging.h"
+
 namespace coreutils {
 
 class File {
  public:
   File() : file_{nullptr} {}
+
+  File(const char* filename, const char* mode)
+      : file_{std::fopen(filename, mode)} {
+  }
+
   virtual ~File() {
     if (file_) {
       Close();
     }
   }
-  File(const char* filename, const char* mode)
-      : file_{std::fopen(filename, mode)} {
-  }
+
   virtual bool Open(const char* filename, const char* mode) {
-    assert(file_ == nullptr);
+    CHECK_EQ(file_, static_cast<FILE*>(nullptr));
     file_ = std::fopen(filename, mode);
     return file_ != nullptr;
   }
+
   virtual bool Close() {
     int ret = 0;
     if (file_) {
@@ -36,12 +42,13 @@ class File {
     }
     return ret == 0;
   }
-  virtual bool Read(char* buffer, int buf_size) {
-    const char* ret = std::fgets(buffer, buf_size, file_);
-    return ret != nullptr;
+
+  virtual int Read(char* buffer, int buf_size) {
+    return std::fread(buffer, 1, buf_size, file_);
   }
+
   virtual bool Eof() {
-    assert(file_ == nullptr);
+    CHECK_EQ(file_, static_cast<FILE*>(nullptr));
     return std::feof(file_) != 0;
   }
 
