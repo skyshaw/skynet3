@@ -21,7 +21,16 @@ cc_test(
     name = "helloworld_test",
     srcs = ["helloworld_test.cc"],
     deps = [
-        "//third_party/gtest",
+        "//gtest:gtest",
+        ":helloworld_lib"
+    ]
+)
+
+cc_test(
+    name = "helloworld2_test",
+    srcs = ["helloworld2_test.cc"],
+    deps = [
+        "//gtest:main",
         ":helloworld_lib"
     ]
 )
