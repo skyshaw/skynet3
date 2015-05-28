@@ -1,5 +1,5 @@
 cc_binary(
     name = "regex",
     srcs = ["regex.cc"],
-    deps = ["//re2"],
+    deps = ["//util/regexp/re2:re2"],
 )
