@@ -5,6 +5,8 @@ cc_binary(
     ],
     deps = [
         "//base",
+        "//strings:ascii_ctype",
         "//third_party/glog:glog",
     ],
 )
+
