@@ -1,13 +1,14 @@
 cc_library(
     name = "base",
     hdrs = [
-        ":macros.h",
-        ":integral_types.h",
-        ":port.h",
-        ":stringprintf.h"
+        "integral_types.h",
+        "int128.h",
+        "macros.h",
+        "port.h",
+        "stringprintf.h"
     ],
     srcs = [
-        ":stringprintf.cc"
+        "stringprintf.cc"
     ],
     visibility = ["//visibility:public"],
 )

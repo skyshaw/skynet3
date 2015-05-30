@@ -83,3 +83,14 @@ cc_binary(
         "//third_party/glog:glog",
     ],
 )
+
+cc_binary(
+    name = "int128",
+    srcs = [
+        "int128.cc"
+    ],
+    deps = [
+        "//base",
+        "//third_party/glog:glog",
+    ],
+)
