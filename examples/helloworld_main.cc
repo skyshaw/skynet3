@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include "examples/helloworld/helloworld.h"
+#include "examples/helloworld.h"
 #include "third_party/glog/logging.h"
 
 int main(int argc, char** argv) {

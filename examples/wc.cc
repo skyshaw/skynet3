@@ -3,7 +3,7 @@
 
 #include  <cstdlib>
 
-#include "examples/coreutils/wc.h"
+#include "examples/wc.h"
 #include "third_party/glog/logging.h"
 
 namespace coreutils {

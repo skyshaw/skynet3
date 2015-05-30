@@ -1,8 +1,8 @@
 // Copyright 2015. All Rights Reserved.
 // Author: pxtian2008@gmail.com (Xiaotian Pei)
 
-#include "examples/coreutils/wc.h"
-#include "examples/coreutils/wc_mock.h"
+#include "examples/wc.h"
+#include "examples/wc_mock.h"
 #include "third_party/gtest/gtest.h"
 #include "third_party/glog/logging.h"
 

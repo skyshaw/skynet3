@@ -1,7 +1,7 @@
 // Copyright 2015. All Rights Reserved.
 // Author: pxtian2008@gmail.com (Xiaotian Pei)
 
-#include "examples/helloworld/helloworld.h"
+#include "examples/helloworld.h"
 #include "third_party/gflags/gflags.h"
 #include "gtest/gtest.h"
 
