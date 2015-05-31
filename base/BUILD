@@ -5,7 +5,8 @@ cc_library(
         "int128.h",
         "macros.h",
         "port.h",
-        "stringprintf.h"
+        "stringprintf.h",
+        "template_util.h"
     ],
     srcs = [
         "stringprintf.cc"
