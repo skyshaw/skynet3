@@ -8,10 +8,12 @@ cc_library(
         "stringpiece.cc"
     ],
     hdrs = [
+        "fastmem.h",
         "stringpiece.h"
     ],
     deps = [
         ":ascii_ctype",
+        "//base"
     ]
 )
 
