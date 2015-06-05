@@ -75,7 +75,7 @@ using std::vector;
 #include "base/port.h"
 #include "base/template_util.h"
 #include "base/type_traits.h"
-#include "util/algorithm.h"
+#include "util/gtl/algorithm.h"
 
 #ifdef LANG_CXX11  // must follow base/port.h
 #include <forward_list>
