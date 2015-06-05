@@ -4,7 +4,7 @@
 #ifndef EXAMPLES_COREUTILS_WC_MOCK_H_
 #define EXAMPLES_COREUTILS_WC_MOCK_H_
 
-#include "examples/coreutils/wc.h"
+#include "examples/wc.h"
 #include "third_party/gmock/gmock.h"
 
 namespace coreutils {
