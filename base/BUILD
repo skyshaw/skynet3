@@ -1,3 +1,7 @@
+package(
+    default_visibility = ["//visibility:public"],
+)
+
 cc_library(
     name = "base",
     hdrs = [
@@ -11,5 +15,4 @@ cc_library(
     srcs = [
         "stringprintf.cc"
     ],
-    visibility = ["//visibility:public"],
 )

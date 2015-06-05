@@ -5,15 +5,19 @@ package(
 cc_library(
     name = "strings",
     srcs = [
+        "case.cc",
         "stringpiece.cc"
     ],
     hdrs = [
+        "case.h",
         "fastmem.h",
         "stringpiece.h"
     ],
     deps = [
         ":ascii_ctype",
-        "//base"
+        "//base",
+        "//util/gtl:stl_util",
+        "//util/hash:hash"
     ]
 )
 
