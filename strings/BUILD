@@ -8,20 +8,24 @@ cc_library(
         "case.cc",
         "escaping.cc",
         "numbers.cc",
-        "stringpiece.cc"
+        "strcat.cc",
+        "stringpiece.cc",
+        "util.cc",
     ],
     hdrs = [
         "case.h",
         "escaping.h",
         "fastmem.h",
         "numbers.h",
-        "stringpiece.h"
+        "strcat.h",
+        "stringpiece.h",
+        "util.h",
     ],
     deps = [
         ":ascii_ctype",
         "//base",
         "//util/gtl:stl_util",
-        "//util/hash:hash"
+        "//util/hash:hash",
     ]
 )
 
