@@ -2,9 +2,10 @@
 #include "base/stringprintf.h"
 #include "base/strtoint.h"
 #include "strings/ascii_ctype.h"
+#include "strings/strcat.h"
 #include "third_party/glog/logging.h"
 
-void ascii() {
+void AsciiEx() {
   for (int ch = 'A'; ch <= 'Z'; ++ch) {
     std::cout << ascii_tolower(ch);
   }
@@ -15,12 +16,18 @@ void ascii() {
   std::cout << std::endl;
 }
 
+void StrCatEx() {
+  std::cout << StrCat("hello ", "world") << '\n';
+  std::cout << StrCat("hello ", 134) << '\n';
+}
+
 int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
   string greeting = StringPrintf("%s %s", "hello", "world");
   std::cout << greeting << std::endl;
   std::cout << atoi64("1234567") << std::endl;
-  ascii();
+  AsciiEx();
+  StrCatEx();
   return 0;
 }

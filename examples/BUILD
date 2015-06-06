@@ -80,6 +80,7 @@ cc_binary(
     deps = [
         "//base",
         "//strings:ascii_ctype",
+        "//strings:strings",
         "//third_party/glog:glog",
     ],
 )
