@@ -55,7 +55,7 @@ using std::string;
 using std::string;
 
 #if defined(HAVE_STRING_PRINTF)
-#include "googleapis/base/stringprintf.h"
+#include "base/stringprintf.h"
 #endif  // HAVE_STRING_PRINTF
 #include "strings/ascii_ctype.h"
 #include "strings/stringpiece.h"

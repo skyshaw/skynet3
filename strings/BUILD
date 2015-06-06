@@ -6,11 +6,15 @@ cc_library(
     name = "strings",
     srcs = [
         "case.cc",
+        "escaping.cc",
+        "numbers.cc",
         "stringpiece.cc"
     ],
     hdrs = [
         "case.h",
+        "escaping.h",
         "fastmem.h",
+        "numbers.h",
         "stringpiece.h"
     ],
     deps = [
