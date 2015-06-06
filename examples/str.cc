@@ -2,6 +2,7 @@
 #include "base/stringprintf.h"
 #include "base/strtoint.h"
 #include "strings/ascii_ctype.h"
+#include "strings/split.h"
 #include "strings/strcat.h"
 #include "third_party/glog/logging.h"
 
@@ -21,6 +22,15 @@ void StrCatEx() {
   std::cout << StrCat("hello ", 134) << '\n';
 }
 
+void SplitEx() {
+  std::string str = "1,2,3,hello,world,5,6,7";
+  auto v = strings::Split(str, ",");
+  for (auto s : v) {
+    std::cout << s << ' ';
+  }
+  std::cout << '\n';
+}
+
 int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
@@ -29,5 +39,6 @@ int main(int argc, char** argv) {
   std::cout << atoi64("1234567") << std::endl;
   AsciiEx();
   StrCatEx();
+  SplitEx();
   return 0;
 }
