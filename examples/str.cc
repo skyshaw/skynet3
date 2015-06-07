@@ -4,6 +4,7 @@
 #include "strings/ascii_ctype.h"
 #include "strings/split.h"
 #include "strings/strcat.h"
+#include "strings/strip.h"
 #include "third_party/glog/logging.h"
 
 void AsciiEx() {
@@ -31,6 +32,12 @@ void SplitEx() {
   std::cout << '\n';
 }
 
+void StripEx() {
+  std::string str = "    hello world   ";
+  StripWhitespace(&str);
+  std::cout << str << '\n';
+}
+
 int main(int argc, char** argv) {
   gflags::ParseCommandLineFlags(&argc, &argv, true);
   google::InitGoogleLogging(argv[0]);
@@ -40,5 +47,6 @@ int main(int argc, char** argv) {
   AsciiEx();
   StrCatEx();
   SplitEx();
+  StripEx();
   return 0;
 }

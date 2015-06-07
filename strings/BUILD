@@ -11,6 +11,7 @@ cc_library(
         "split.cc",
         "strcat.cc",
         "stringpiece.cc",
+        "strip.cc",
         "util.cc",
     ],
     hdrs = [
@@ -21,6 +22,7 @@ cc_library(
         "split.h",
         "strcat.h",
         "stringpiece.h",
+        "strip.h",
         "util.h",
     ],
     deps = [
