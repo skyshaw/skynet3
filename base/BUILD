@@ -8,6 +8,7 @@ cc_library(
         "integral_types.h",
         "int128.h",
         "macros.h",
+        "mutex.h",
         "port.h",
         "stringprintf.h",
         "template_util.h"
