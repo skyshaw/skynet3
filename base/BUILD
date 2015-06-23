@@ -11,9 +11,11 @@ cc_library(
         "mutex.h",
         "port.h",
         "stringprintf.h",
-        "template_util.h"
+        "template_util.h",
+        "timer.h"
     ],
     srcs = [
-        "stringprintf.cc"
+        "stringprintf.cc",
+        "timer.cc"
     ],
 )
