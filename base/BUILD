@@ -7,6 +7,7 @@ cc_library(
     hdrs = [
         "integral_types.h",
         "int128.h",
+        "logging.h",
         "macros.h",
         "mutex.h",
         "port.h",
@@ -15,6 +16,7 @@ cc_library(
         "timer.h"
     ],
     srcs = [
+        "logging.cc",
         "stringprintf.cc",
         "timer.cc"
     ],
