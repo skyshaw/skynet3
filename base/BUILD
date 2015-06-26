@@ -13,11 +13,13 @@ cc_library(
         "port.h",
         "stringprintf.h",
         "template_util.h",
-        "timer.h"
+        "timer.h",
+        "walltime.h",
     ],
     srcs = [
         "logging.cc",
         "stringprintf.cc",
-        "timer.cc"
+        "timer.cc",
+        "walltime.cc",
     ],
 )
