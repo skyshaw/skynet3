@@ -5,6 +5,7 @@ package(
 cc_library(
     name = "base",
     hdrs = [
+        "casts.h",
         "integral_types.h",
         "int128.h",
         "logging.h",
