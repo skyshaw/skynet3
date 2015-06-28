@@ -11,6 +11,7 @@ cc_library(
         "logging.h",
         "macros.h",
         "mutex.h",
+        "notification.h",
         "port.h",
         "stringprintf.h",
         "template_util.h",
@@ -19,6 +20,7 @@ cc_library(
     ],
     srcs = [
         "logging.cc",
+        "notification.cc",
         "stringprintf.cc",
         "timer.cc",
         "walltime.cc",
