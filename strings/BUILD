@@ -32,6 +32,7 @@ cc_library(
         "//base",
         "//util/gtl:stl_util",
         "//util/hash:hash",
+        "//util/utf",
     ]
 )
 
