@@ -10,6 +10,16 @@ cc_library(
 )
 
 cc_library(
+    name = "charmap",
+    hdrs = [
+        "charmap.h",
+    ],
+    deps = [
+         "//base",
+    ],
+)
+
+cc_library(
     name = "stl_util",
     hdrs = [
         "stl_util.h",
