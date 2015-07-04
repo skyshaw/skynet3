@@ -57,6 +57,7 @@
 //   is_integral
 //   is_floating_point
 //   is_pointer
+//   is_enum
 //   is_reference
 //   is_pod
 //   has_trivial_constructor
@@ -88,6 +89,11 @@ template <bool cond, class T> struct enable_if;
 template <class T> struct is_integral;
 template <class T> struct is_floating_point;
 template <class T> struct is_pointer;
+// MSVC can't compile this correctly, and neither can gcc 3.3.5 (at least)
+#if !defined(_MSC_VER) && !(defined(__GNUC__) && __GNUC__ <= 3)
+// is_enum uses is_convertible, which is not available on MSVC.
+template <class T> struct is_enum;
+#endif
 template <class T> struct is_reference;
 template <class T> struct is_pod;
 template <class T> struct has_trivial_constructor;
@@ -101,7 +107,7 @@ template <class T> struct remove_reference;
 template <class T> struct add_reference;
 template <class T> struct remove_pointer;
 template <class T, class U> struct is_same;
-#if !(defined(__GNUC__) && __GNUC__ <= 3)
+#if !defined(_MSC_VER) && !(defined(__GNUC__) && __GNUC__ <= 3)
 template <class From, class To> struct is_convertible;
 #endif
 
@@ -163,6 +169,8 @@ template <class T> struct is_pointer<const T> : is_pointer<T> { };
 template <class T> struct is_pointer<volatile T> : is_pointer<T> { };
 template <class T> struct is_pointer<const volatile T> : is_pointer<T> { };
 
+#if !defined(_MSC_VER) && !(defined(__GNUC__) && __GNUC__ <= 3)
+
 namespace internal {
 
 template <class T> struct is_class_or_union {
@@ -171,23 +179,20 @@ template <class T> struct is_class_or_union {
   static const bool value = sizeof(tester<T>(0)) == sizeof(small_);
 };
 
-#if defined(_MSC_VER) || (defined(__GNUC__) && __GNUC__ <= 3)
-
-// is_enum not meaningfully available on MSVC or old GCC: always false_type.
-template <class T> struct is_enum : base::false_type { };
-
-#else  // case for non-GCC or old GCC follows
-
 // is_convertible chokes if the first argument is an array. That's why
 // we use add_reference here.
-template <class T, bool IsEnum> struct is_enum_impl
+template <bool NotUnum, class T> struct is_enum_impl
     : is_convertible<typename add_reference<T>::type, int> { };
 
-template <class T> struct is_enum_impl<T, false> : false_type { };
+template <class T> struct is_enum_impl<true, T> : false_type { };
+
+}  // namespace internal
+
+// Specified by TR1 [4.5.1] primary type categories.
 
 // Implementation note:
 //
-// Supported types are either void, integral, floating point, array, pointer,
+// Each type is either void, integral, floating point, array, pointer,
 // reference, member object pointer, member function pointer, enum,
 // union or class. Out of these, only integral, floating point, reference,
 // class and enum types are potentially convertible to int. Therefore,
@@ -195,23 +200,23 @@ template <class T> struct is_enum_impl<T, false> : false_type { };
 // is convertible to int, it's a enum. Adding cv-qualification to a type
 // does not change whether it's an enum.
 //
-// is_enum_impl's is_convertible check is done only if all other checks pass,
+// Is-convertible-to-int check is done only if all other checks pass,
 // because it can't be used with some types (e.g. void or classes with
 // inaccessible conversion operators).
 template <class T> struct is_enum
-    : is_enum_impl<T, !is_same<T, void>::value &&
-                      !is_integral<T>::value &&
-                      !is_floating_point<T>::value &&
-                      !is_reference<T>::value &&
-                      !is_class_or_union<T>::value> { };
-
-#endif
+    : internal::is_enum_impl<
+          is_same<T, void>::value ||
+              is_integral<T>::value ||
+              is_floating_point<T>::value ||
+              is_reference<T>::value ||
+              internal::is_class_or_union<T>::value,
+          T> { };
 
 template <class T> struct is_enum<const T> : is_enum<T> { };
 template <class T> struct is_enum<volatile T> : is_enum<T> { };
 template <class T> struct is_enum<const volatile T> : is_enum<T> { };
 
-}  // namespace internal
+#endif
 
 // is_reference is false except for reference types.
 template<typename T> struct is_reference : false_type {};
@@ -225,7 +230,10 @@ template<typename T> struct is_reference<T&> : true_type {};
 template <class T> struct is_pod
  : integral_constant<bool, (is_integral<T>::value ||
                             is_floating_point<T>::value ||
-                            internal::is_enum<T>::value ||
+#if !defined(_MSC_VER) && !(defined(__GNUC__) && __GNUC__ <= 3)
+                            // is_enum is not available on MSVC.
+                            is_enum<T>::value ||
+#endif
                             is_pointer<T>::value)> { };
 template <class T> struct is_pod<const T> : is_pod<T> { };
 template <class T> struct is_pod<volatile T> : is_pod<T> { };
@@ -361,3 +369,4 @@ struct is_convertible
 #define ENFORCE_POD(TypeName) typedef int Dummy_Type_For_ENFORCE_POD
 
 #endif  // BASE_TYPE_TRAITS_H_
+
