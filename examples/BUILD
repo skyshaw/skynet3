@@ -106,3 +106,15 @@ cc_binary(
         "//third_party/glog:glog",
     ],
 )
+
+cc_binary(
+    name = "stl",
+    srcs = [
+        "stl.cc",
+    ],
+    deps = [
+        "//base",
+        "//third_party/glog:glog",
+        "//util/gtl:stl_util",
+    ],
+)
