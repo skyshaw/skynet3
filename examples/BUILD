@@ -95,3 +95,14 @@ cc_binary(
         "//third_party/glog:glog",
     ],
 )
+
+cc_binary(
+    name = "type_traits",
+    srcs = [
+        "type_traits.cc",
+    ],
+    deps = [
+        "//base",
+        "//third_party/glog:glog",
+    ],
+)
