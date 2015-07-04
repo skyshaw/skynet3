@@ -75,7 +75,7 @@ using std::vector;
 #include "base/macros.h"
 #include "base/port.h"
 #include "base/template_util.h"
-//#include "base/type_traits.h"
+#include "base/type_traits.h"
 #include "util/gtl/algorithm.h"
 
 #ifdef LANG_CXX11  // must follow base/port.h
