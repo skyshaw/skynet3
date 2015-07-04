@@ -13,6 +13,7 @@ cc_library(
         "strcat.cc",
         "stringpiece.cc",
         "strip.cc",
+        "substitute.cc",
         "util.cc",
     ],
     hdrs = [
@@ -25,11 +26,13 @@ cc_library(
         "strcat.h",
         "stringpiece.h",
         "strip.h",
+        "substitute.h",
         "util.h",
     ],
     deps = [
         ":ascii_ctype",
         "//base",
+        "//util/gtl:charmap",
         "//util/gtl:stl_util",
         "//util/hash:hash",
         "//util/utf",
